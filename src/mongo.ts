@@ -11,8 +11,9 @@ async function find(collection: string, keys: object) {
   return (result !== null);
 }
 
-async function insert(collection: string, data: object) {
+async function insert(collection: string, data: any) {
   const db = await dbPromise;
+  data.timeStamp = Date.now();
   const result = await db.collection(collection).insertOne(data);
   // console.log('done: ' + result.insertedCount + ' record inserted');
 }
