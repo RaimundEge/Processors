@@ -17,4 +17,11 @@ async function insert(collection: string, data: object) {
   // console.log('done: ' + result.insertedCount + ' record inserted');
 }
 
-export { find, insert };
+async function getAll(collection: string) {
+  const db = await dbPromise;
+  const result = await db.collection(collection).find({}, {'limit':20, 'sort':[['timeStamp','desc']]}).toArray();
+  console.log(result);
+  return result;
+}
+
+export { find, insert, getAll };

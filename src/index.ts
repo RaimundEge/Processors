@@ -1,6 +1,7 @@
 import express from "express";
 import credit from "./credit";
 import order from "./order";
+import { getAll } from "./mongo";
 
 const app = express();
 const port = 3000; // default port to listen
@@ -19,8 +20,14 @@ app.use(logger);
 app.post("/creditcard", (request, response) => {
     credit(request, response);
 });
+app.get("/creditcard", (request, response) => {
+    getAll('credit').then(docs => response.send(docs));
+});
 app.post("/purchaseorder", (request, response) => {
     order(request, response);
+});
+app.get("/purchaseorder", (request, response) => {
+    getAll('order').then(docs => response.send(docs));
 });
 
 // start the Express server
