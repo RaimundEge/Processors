@@ -1,6 +1,13 @@
 import mariadb from "mariadb";
+import "./env";
 
-const pool = mariadb.createPool({ host: "er7lx9km02rjyf3n.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", database: "b25oudnru9u3blk4", user: "rs0czd6o8w8e8r3j", password: "w1ffboir25orrcs4", connectionLimit: 5 });
+const pool = mariadb.createPool({
+    host: process.env.MARIA_URL,
+    database: process.env.MARIA_DB,
+    user: process.env.MARIA_USER,
+    password: process.env.MARIA_PASSWORD,
+    connectionLimit: 2
+});
 
 async function check(poData: any) {
     // console.log('find: ', poData)

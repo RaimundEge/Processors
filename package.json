@@ -14,7 +14,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/dotenv": "^6.1.1",
     "@types/mongodb": "^3.3.5",
+    "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "mariadb": "^2.1.1",
     "mongodb": "^3.3.2"
