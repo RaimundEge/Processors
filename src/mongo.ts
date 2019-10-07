@@ -21,7 +21,7 @@ async function insert(collection: string, data: any) {
 
 async function getAll(collection: string) {
   const db = await dbPromise;
-  const result = await db.collection(collection).find({}, {'limit':20, 'sort':[['timeStamp','desc']]}).toArray();
+  const result = await db.collection(collection).find({}, {limit: 20, sort: [["timeStamp", "desc"]]}).toArray();
   // console.log(result);
   return result;
 }
