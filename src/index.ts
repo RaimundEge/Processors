@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import credit from "./credit";
 import { getAll } from "./mongo";
 import order from "./order";
@@ -16,6 +17,7 @@ function logger(request: express.Request, response: express.Response, next: any)
     next();
 }
 app.use(logger);
+app.use(cors());
 
 app.post("/creditcard", (request, response) => {
     credit(request, response);
@@ -32,5 +34,5 @@ app.get("/purchaseorder", (request, response) => {
 
 // start the Express server
 app.listen(port, () => {
-    console.log("server started at http://localhost:%d", port);
+    console.log("server started at http://blitz.cs.niu.edu:%d", port);
 });
