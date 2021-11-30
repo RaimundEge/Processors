@@ -5,7 +5,6 @@ Description=Node.js Server for creditcard purchaseorder processing
 ExecStart="/home/www/html/Processors/run"
 # Required on some systems
 WorkingDirectory=/home/www/html/Processors
-#WorkingDirectory=/home/ege/OneDrive/NIU Work/Netbeans Projects Node.js/CSCI467 DemoDB Rest Service
 Restart=always
 # Restart service after 10 seconds if node service crashes
 RestartSec=10

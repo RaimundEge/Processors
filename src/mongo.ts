@@ -21,6 +21,9 @@ async function insert(collection: string, data: any) {
 
 async function getAll(collection: string) {
   const db = await dbPromise;
+  var compare = new Date();
+  compare.setDate(compare.getDate() - 30);
+  var search = {"timeStamp": { "$gt": compare}}; 
   const result = await db.collection(collection).find({}, {limit: 20, sort: [["timeStamp", "desc"]]}).toArray();
   // console.log(result);
   return result;
