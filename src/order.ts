@@ -19,11 +19,11 @@ export default async (request: express.Request, response: express.Response) => {
     if (errors.length === 0) {
         // processDay is some random days from now
         const oldDate = new Date();
-        const wait = Math.floor(25 + Math.random() * 40);
+        const wait = Math.floor(20 + Math.random() * 40);
         const newDate = new Date(oldDate.getFullYear(), oldDate.getMonth(), oldDate.getDate() + wait);
         poData.processDay = newDate.getFullYear() + "/" + (newDate.getMonth() + 1) + "/" + newDate.getDate() ;
         // compute commission
-        poData.commission = Math.floor(Math.random() * 17.0 + 3) + "%";
+        poData.commission = Math.round(Math.random() * 17.0 + 3) + "%";
         await insert("order", poData);
     }
     if (errors.length > 0) {
