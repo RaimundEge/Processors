@@ -23,7 +23,7 @@ export default async (request: express.Request, response: express.Response) => {
         const newDate = new Date(oldDate.getFullYear(), oldDate.getMonth(), oldDate.getDate() + wait);
         poData.processDay = newDate.getFullYear() + "/" + (newDate.getMonth() + 1) + "/" + newDate.getDate() ;
         // compute commission
-        poData.commission = Math.round(Math.random() * 17.0 + 3) + "%";
+        poData.commission = Math.round(Math.random() * 15.0 + 4) + "%";
         await insert("order", poData);
     }
     if (errors.length > 0) {
