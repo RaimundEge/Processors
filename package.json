@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "tslint -c tslint.json -p tsconfig.json --fix",
     "build": "tsc",
-    "prestart": "npm run build",
+    "//prestart": "npm run build",
     "start": "node .",
     "dev": "ts-node-dev --no-notify src/"
   },
