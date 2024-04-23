@@ -1,9 +1,6 @@
-/* tslint:disable */
+import { find, insert } from "./mongo.js";
 
-import express from "express";
-import { find, insert } from "./mongo";
-
-export default async (request: express.Request, response: express.Response) => {
+export default async (request, response) => {
     // console.log(request.body);
     const ccData = request.body;
     const errors = checkRequired(ccData);
@@ -29,7 +26,7 @@ export default async (request: express.Request, response: express.Response) => {
     response.send(ccData);
 };
 
-function checkRequired(ccData: object) {
+function checkRequired(ccData) {
     const errors = [];
     if (!("name" in ccData)) {
         errors.push("card holder name missing");
@@ -52,7 +49,7 @@ function checkRequired(ccData: object) {
     return errors;
 }
 
-function checkNumber(value: string) {
+function checkNumber(value) {
     // returns true on valid number
     // accept only digits, dashes or spaces
     if (/[^0-9-\s]+/.test(value)) {
@@ -77,7 +74,7 @@ function checkNumber(value: string) {
     return ((nCheck % 10) === 0) ? [] : ["credit card number is invalid"];
 }
 
-function ccBrand(cur_val: string) {
+function ccBrand(cur_val) {
     let sel_brand;
 
     // the regular expressions check for possible matches as you type, hence the OR operators based on the number of chars
@@ -128,7 +125,7 @@ function ccBrand(cur_val: string) {
     return sel_brand;
 }
 
-function checkExp(value: string) {
+function checkExp(value) {
     const d = new Date();
     const year = d.getFullYear();
     const month = d.getMonth() + 1;

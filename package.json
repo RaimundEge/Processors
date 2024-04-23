@@ -1,33 +1,23 @@
 {
-  "name": "Processors",
-  "version": "1.0.0",
+  "name": "processors",
+  "version": "2.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "lint": "tslint -c tslint.json -p tsconfig.json --fix",
-    "build": "tsc",
-    "//prestart": "npm run build",
-    "start": "node .",
-    "dev": "ts-node-dev --no-notify src/"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Raimund Ege",
   "license": "ISC",
   "dependencies": {
-    "@types/cors": "^2.8.12",
-    "@types/dotenv": "^6.1.1",
-    "@types/mongodb": "^3.6.20",
     "cors": "^2.8.5",
-    "dotenv": "^8.6.0",
-    "express": "^4.17.1",
-    "mariadb": "^2.5.5",
-    "mongodb": "^3.7.3"
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mariadb": "^3.3.0",
+    "mongodb": "^6.5.0"
   },
   "devDependencies": {
-    "@types/express": "^4.17.13",
-    "@types/node": "^12.20.37",
-    "ts-node-dev": "^1.1.8",
-    "tslint": "^5.20.1",
-    "typescript": "^3.9.10"
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21"
   }
 }

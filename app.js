@@ -1,17 +1,17 @@
-import express from "express";
-import cors from "cors";
-import credit from "./credit";
-import { getAll } from "./mongo";
-import order from "./order";
+import express, { json, urlencoded } from 'express';
+import cors from 'cors';
+
+import { getAll } from "./src/mongo.js";
+import order from "./src/order.js";
 
 const app = express();
-const port = 3000; // default port to listen
+var port = process.env.PORT || 3000; // default port to listen
 
 // enable body parsing
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(json());
+app.use(urlencoded({ extended: true }));
 
-function logger(request: express.Request, response: express.Response, next: any) {
+function logger(request, response, next) {
     const ip = request.headers["x-forwarded-for"] || request.connection.remoteAddress;
     console.log(new Date().toLocaleString() + " -- " + `${ip} ${request.method} ${request.path}`);
     next();
@@ -19,6 +19,7 @@ function logger(request: express.Request, response: express.Response, next: any)
 app.use(logger);
 app.use(cors());
 
+import credit from './src/credit.js';
 app.post("/creditcard", (request, response) => {
     credit(request, response);
 });
@@ -33,6 +34,7 @@ app.get("/purchaseorder", (request, response) => {
 });
 
 // start the Express server
+import os from 'os';
 app.listen(port, () => {
-    console.log("server started at http://blitz.cs.niu.edu:%d", port);
+    console.log("server started at " + os.hostname + ":%d", port);
 });

@@ -1,5 +1,5 @@
 import mariadb from "mariadb";
-import "./env";
+import "./env.js";
 
 const pool = mariadb.createPool({
     host: process.env.MARIA_URL,
@@ -9,10 +9,10 @@ const pool = mariadb.createPool({
     connectionLimit: 2
 });
 
-async function check(poData: any) {
+async function check(poData) {
     // console.log('find: ', poData)
     let conn;
-    let errors: string[] = [];
+    let errors = [];
     try {
         conn = await pool.getConnection();
         const rows = await conn.query("SELECT * FROM customers WHERE id = ?", [poData.custid]);

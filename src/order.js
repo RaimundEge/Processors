@@ -1,8 +1,8 @@
 import express from "express";
-import { check } from "./maria";
-import { find, insert } from "./mongo";
+import { check } from "./maria.js";
+import { find, insert } from "./mongo.js";
 
-export default async (request: express.Request, response: express.Response) => {
+export default async (request, response) => {
     // console.log(request.body);
     const poData = request.body;
     let errors = checkRequired(poData);
@@ -32,7 +32,7 @@ export default async (request: express.Request, response: express.Response) => {
     response.send(poData);
 };
 
-function checkRequired(poData: object) {
+function checkRequired(poData) {
     const errors = [];
     if (!("custid" in poData)) {
         errors.push("customer id missing");
