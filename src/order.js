@@ -1,4 +1,3 @@
-import express from "express";
 import { check } from "./maria.js";
 import { find, insert } from "./mongo.js";
 
