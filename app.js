@@ -4,10 +4,11 @@ import cors from 'cors';
 import { getAll } from "./src/mongo.js";
 import credit from './src/credit.js';
 import order from "./src/order.js";
-import getTemps from './src/temps.js'
+import getTemps from './src/temps.js';
+import { getScanLogRecords } from './src/scanlogs.js';
 
 const app = express();
-var port = process.env.PORT || 3000; // default port to listen
+var port = process.env.PORT || 3001; // default port to listen
 
 // enable body parsing
 app.use(json());
@@ -33,8 +34,13 @@ app.post("/purchaseorder", (request, response) => {
 app.get("/purchaseorder", (request, response) => {
     getAll("order").then((docs) => response.send(docs));
 });
+// Wine room temperature
 app.get("/refertemp", (request, response) => {
     getTemps(request, response);
+});
+// PortScanLog records
+app.get("/records", (request, response) => {
+    getScanLogRecords(request, response);
 });
 // start the Express server
 import os from 'os';
